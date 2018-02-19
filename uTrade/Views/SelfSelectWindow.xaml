@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="uTrade.Views.SelfSelectWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:uTrade.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="50*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ToolBar Grid.Row="0" DockPanel.Dock="Top">
+            <Button x:Name="btn_Favorite" ToolTip="自选">
+                <Button.Content>
+                    <Image Source="/uTrade;component/Images/Settings.png" Width="16" Height="16" />
+                </Button.Content>
+            </Button>
+            <Button x:Name="btn_RunSelect" Content="筛选" HorizontalAlignment="Left" Margin="14,10,0,0" VerticalAlignment="Top" Width="49" Click="btn_RunSelect_Click"/>
+
+        </ToolBar>
+        <DataGrid x:Name="dg_SelfSelect" Grid.Row="1" ItemsSource="{Binding}" AutoGenerateColumns="False" MouseDoubleClick="DetailGrid_MouseDoubleClick">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="基金代码" Width="60" Binding="{Binding Symbol}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="基金名称" Width="80*" Binding="{Binding Name}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="日期" Width="60*" Binding="{Binding CurDate}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="单位净值" Width="60*" Binding="{Binding NetAssetValue}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="累计净值" Width="60*" Binding="{Binding AccumulatedNet}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="日增长率" Width="60" Binding="{Binding DailyGrowth}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="近一周" Width="60" Binding="{Binding LastWeek}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="近1月" Width="60" Binding="{Binding LastMonth}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="近3月" Width="60" Binding="{Binding Last3Month}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="近6月" Width="60" Binding="{Binding Last6Month}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="近1年" Width="60" Binding="{Binding LastYear}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="近2年" Width="60" Binding="{Binding Last2Year}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="近3年" Width="60" Binding="{Binding Last3Year}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="今年来" Width="60" Binding="{Binding ThisYear}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="成立来" Width="60" Binding="{Binding SinceBuilt}" IsReadOnly="True"/>
+                <DataGridTemplateColumn Header="操作" MinWidth="16">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btn_Favorite" ToolTip="自选" Click="btn_Favorite_Click">
+                                <Image Source="/uTrade;component/Images/un-favorite.png" Width="16" Height="16" />
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

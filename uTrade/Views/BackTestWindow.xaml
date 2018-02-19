@@ -1,0 +1,98 @@
+﻿<UserControl x:Class="uTrade.Views.BackTestWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:uTrade.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1200">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="400*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="dg_Strategies" ItemsSource="{Binding}" AutoGenerateColumns="False" Margin="0,0,0.2,0" HeadersVisibility="All" Grid.Column="0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="策略名称" Width="120*" Binding="{Binding TypeFullName}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="开始时间" Width="80*" Binding="{Binding BeginDate}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="结束时间" Width="80*" Binding="{Binding EndDate}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="周期" Width="80*" Binding="{Binding Interval}" IsReadOnly="True"/>
+                <DataGridTemplateColumn Header="操作" MinWidth="16">
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="50*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <ToolBar Grid.Row="0" DockPanel.Dock="Top">
+                <Button x:Name="btn_Favorite" ToolTip="自选">
+                    <Button.Content>
+                        <Image Source="/uTrade;component/Images/Settings.png" Width="16" Height="16" />
+                    </Button.Content>
+                </Button>
+                <ComboBox x:Name="cmbx_Stratagies" Margin="0,0,0,2.444" VerticalAlignment="Stretch" Width="252">
+                    <ComboBoxItem IsSelected="True">- 策略 -</ComboBoxItem>
+                </ComboBox>
+                <ComboBox x:Name="cmbx_Interval" Height="21.6" Margin="0" VerticalAlignment="Top" Width="120">
+                    <ComboBoxItem IsSelected="True">- 周期 -</ComboBoxItem>
+                </ComboBox>
+                <DatePicker x:Name="dp_BeginTime" Height="24" VerticalAlignment="Top" Width="148" Text="开始时间" ToolTip="开始时间"/>
+                <DatePicker x:Name="dp_EndTime" Height="24" VerticalAlignment="Top" Width="133"/>
+                <Button x:Name="btn_Simulate" ToolTip="运行" Click="btn_Simulate_Click">
+                    <Button.Content>
+                        <Image x:Name="btn_RunStra" Source="/uTrade;component/Images/Do.png" Width="18" Height="18" />
+                    </Button.Content>
+                </Button>
+            </ToolBar>
+            <TabControl Margin="0,0,0,0" Grid.Row="1">
+                <TabItem Header="综合报告">
+                    <Grid Background="#FFE5E5E5">
+                        <DataGrid x:Name="dg_selected" ItemsSource="{Binding}" AutoGenerateColumns="False" Margin="0,0,0.2,0" HeadersVisibility="All">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="统计指标" Width="150*" Binding="{Binding Symbol}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="全部交易" Width="80*" Binding="{Binding Name}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="多头" Width="80*" Binding="{Binding CurDate}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="空头" Width="80*" Binding="{Binding NetAssetValue}" IsReadOnly="True"/>
+                                <DataGridTemplateColumn Header="操作" MinWidth="16">
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="交易记录">
+                    <Grid Background="#FFE5E5E5">
+                        <DataGrid x:Name="dgTradeDetail" ItemsSource="{Binding}" AutoGenerateColumns="False" Margin="0,0,0.2,0" HeadersVisibility="All">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="序号" Width="50*" Binding="{Binding Symbol}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="代码" Width="80*" Binding="{Binding Name}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="名称" Width="160*" Binding="{Binding CurDate}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="买入日期" Width="80*" Binding="{Binding NetAssetValue}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="买入价格" Width="80*" Binding="{Binding NetAssetValue}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="买入数量" Width="80*" Binding="{Binding NetAssetValue}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="卖出日期" Width="80*" Binding="{Binding NetAssetValue}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="卖出价格" Width="80*" Binding="{Binding NetAssetValue}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="当前持有数量" Width="80*" Binding="{Binding NetAssetValue}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="当前盈利" Width="80*" Binding="{Binding NetAssetValue}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="类型" Width="80*" Binding="{Binding NetAssetValue}" IsReadOnly="True"/>
+                                <DataGridTemplateColumn Header="操作" MinWidth="16">
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="分析图表">
+                    <Grid Background="#FFE5E5E5"/>
+                </TabItem>
+                <TabItem Header="费率设置">
+                    <Grid Background="#FFE5E5E5"/>
+                </TabItem>
+                <Label Content="Label" Height="100" Width="100"/>
+            </TabControl>
+        </Grid>
+
+
+    </Grid>
+</UserControl>

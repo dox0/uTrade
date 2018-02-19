@@ -1,0 +1,7 @@
+
+
+1
+需求名称：在回测时点击运行图标后（按参数配置按钮）显示策略的配置参数
+
+详细信息：BackTestWindow.xaml.cs中btn_Simulate_Click
+

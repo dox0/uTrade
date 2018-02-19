@@ -1,0 +1,124 @@
+﻿<UserControl x:Class="uTrade.Views.FundDetailWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:uTrade.Views"
+             xmlns:loc="clr-namespace:uTrade.Controls;assembly=uTrade.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="1100" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <loc:ColorConverter x:Key="colorCvt" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="50*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ToolBar Grid.Row="0" DockPanel.Dock="Top">
+            <Button x:Name="btn_Settings" ToolTip="自选">
+                <Button.Content>
+                    <Image Source="/uTrade;component/Images/Settings.png" Width="16" Height="16" />
+                </Button.Content>
+            </Button>
+            <Button x:Name="btn_FavoriteFilter" ToolTip="自选" Click="btn_FavoriteFilter_Click">
+                <Button.Content>
+                    <Image Source="/uTrade;component/Images/un-favorite.png" Width="16" Height="16" />
+                </Button.Content>
+            </Button>
+            <Button x:Name="btnGetFundDetailByID" Content="获取详情" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnGetFundDetailByID_Click"/>
+            <TextBox x:Name="tbxSrhDetailFundID" HorizontalAlignment="Left" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="64" Text="470009"/>
+            <Button x:Name="btnSyncFromRemote" Content="同步" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="75" Click="btnSyncFromRemote_Click"/>
+            <ProgressBar x:Name="pgbSync" HorizontalAlignment="Left" Height="10" Margin="0,5,0,0" VerticalAlignment="Top" Width="100"/>
+        </ToolBar>
+        <DataGrid x:Name="DetailGrid" Grid.Row="1" ItemsSource="{Binding lstRankAll,Mode=OneWay}" AutoGenerateColumns="False" Margin="0,1,0.2,0" IsReadOnly="True" MouseDoubleClick="DetailGrid_MouseDoubleClick">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="基金代码" Width="60" Binding="{Binding Symbol}"/>
+                <DataGridTextColumn Header="基金名称" Width="80*" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="日期" Width="40*" Binding="{Binding CurDate}"/>
+                <DataGridTextColumn Header="单位净值" Width="60" Binding="{Binding NetAssetValue}"/>
+                <DataGridTextColumn Header="累计净值" Width="60" Binding="{Binding AccumulatedNet}"/>
+                <DataGridTextColumn Header="日增长率" Width="60" Binding="{Binding DailyGrowth}">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Foreground" Value="{Binding DailyGrowth,Converter={StaticResource colorCvt}}"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="近一周" Width="60" Binding="{Binding LastWeek}">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Foreground" Value="{Binding LastWeek,Converter={StaticResource colorCvt}}"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="近1月" Width="60" Binding="{Binding LastMonth}">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Foreground" Value="{Binding LastMonth,Converter={StaticResource colorCvt}}"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="近3月" Width="60" Binding="{Binding Last3Month}">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Foreground" Value="{Binding Last3Month,Converter={StaticResource colorCvt}}"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="近6月" Width="60" Binding="{Binding Last6Month}">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Foreground" Value="{Binding Last6Month,Converter={StaticResource colorCvt}}"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="近1年" Width="60" Binding="{Binding LastYear}">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Foreground" Value="{Binding LastYear,Converter={StaticResource colorCvt}}"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="近2年" Width="60" Binding="{Binding Last2Year}">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Foreground" Value="{Binding Last2Year,Converter={StaticResource colorCvt}}"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="近3年" Width="60" Binding="{Binding Last3Year}">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Foreground" Value="{Binding Last3Year,Converter={StaticResource colorCvt}}"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="今年来" Width="60" Binding="{Binding ThisYear}">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Foreground" Value="{Binding ThisYear,Converter={StaticResource colorCvt}}"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="成立来" Width="60" Binding="{Binding SinceBuilt}">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Foreground" Value="{Binding SinceBuilt,Converter={StaticResource colorCvt}}"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="手续费" Width="60" Binding="{Binding PoundageCount}"/>
+                <DataGridTemplateColumn Header="操作" MinWidth="16">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btn_Favorite" ToolTip="自选" Click="btn_Favorite_Click">
+                                <Image Source="/uTrade;component/Images/un-favorite.png" Width="16" Height="16" />
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

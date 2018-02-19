@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{5A13B9CA-3411-4071-A647-03C512100F79}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Alveo.UserCode</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Alveo.Interfaces" />
+    <Reference Include="Alveo.Common" />
+    <Reference Include="NLog" />
+    <Reference Include="System" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Alveo.CollectionEditor" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Alveo.UserCode\AC.cs" />
+    <Compile Include="Alveo.UserCode\AD.cs" />
+    <Compile Include="Alveo.UserCode\ADX.cs" />
+    <Compile Include="Alveo.UserCode\Alligator.cs" />
+    <Compile Include="Alveo.UserCode\AO.cs" />
+    <Compile Include="Alveo.UserCode\ApiaryPivots.cs" />
+    <Compile Include="Alveo.UserCode\Aroon.cs" />
+    <Compile Include="Alveo.UserCode\ATR.cs" />
+    <Compile Include="Alveo.UserCode\Bands.cs" />
+    <Compile Include="Alveo.UserCode\BearPower.cs" />
+    <Compile Include="Alveo.UserCode\BullsPower.cs" />
+    <Compile Include="Alveo.UserCode\BWMFI.cs" />
+    <Compile Include="Alveo.UserCode\CCI.cs" />
+    <Compile Include="Alveo.UserCode\CHV.cs" />
+    <Compile Include="Alveo.UserCode\CMF.cs" />
+    <Compile Include="Alveo.UserCode\CodeBase.cs" />
+    <Compile Include="Alveo.UserCode\DateTimeFormat.cs" />
+    <Compile Include="Alveo.UserCode\DonchianChannels.cs" />
+    <Compile Include="Alveo.UserCode\DPO.cs" />
+    <Compile Include="Alveo.UserCode\DrawShapeStyle.cs" />
+    <Compile Include="Alveo.UserCode\DrawStyle.cs" />
+    <Compile Include="Alveo.UserCode\EMA.cs" />
+    <Compile Include="Alveo.UserCode\Envelopes.cs" />
+    <Compile Include="Alveo.UserCode\ExpertAdvisorBase.cs" />
+    <Compile Include="Alveo.UserCode\FileData.cs" />
+    <Compile Include="Alveo.UserCode\FileSeekOrigin.cs" />
+    <Compile Include="Alveo.UserCode\Force.cs" />
+    <Compile Include="Alveo.UserCode\Fractals.cs" />
+    <Compile Include="Alveo.UserCode\Gactor.cs" />
+    <Compile Include="Alveo.UserCode\HMA.cs" />
+    <Compile Include="Alveo.UserCode\Ichimoku.cs" />
+    <Compile Include="Alveo.UserCode\IchimokuLineType.cs" />
+    <Compile Include="Alveo.UserCode\IndicatorADXLineType.cs" />
+    <Compile Include="Alveo.UserCode\IndicatorAligatorLineType.cs" />
+    <Compile Include="Alveo.UserCode\IndicatorBase.cs" />
+    <Compile Include="Alveo.UserCode\IndicatorCache.cs" />
+    <Compile Include="Alveo.UserCode\IndicatorLineHMA.cs" />
+    <Compile Include="Alveo.UserCode\IndicatorLineIchimoku.cs" />
+    <Compile Include="Alveo.UserCode\IndicatorLineMainSignal.cs" />
+    <Compile Include="Alveo.UserCode\IndicatorLinesUpperLower.cs" />
+    <Compile Include="Alveo.UserCode\KeltnerChannels.cs" />
+    <Compile Include="Alveo.UserCode\LWMA.cs" />
+    <Compile Include="Alveo.UserCode\MACD.cs" />
+    <Compile Include="Alveo.UserCode\Marketinfo.cs" />
+    <Compile Include="Alveo.UserCode\MessageBoxFlags.cs" />
+    <Compile Include="Alveo.UserCode\MessageBoxResult.cs" />
+    <Compile Include="Alveo.UserCode\MFI.cs" />
+    <Compile Include="Alveo.UserCode\Momentum.cs" />
+    <Compile Include="Alveo.UserCode\MovingAverageType.cs" />
+    <Compile Include="Alveo.UserCode\MqlFileHelper.cs" />
+    <Compile Include="Alveo.UserCode\MqlResult.cs" />
+    <Compile Include="Alveo.UserCode\ObjectProperties.cs" />
+    <Compile Include="Alveo.UserCode\ObjectVisibility.cs" />
+    <Compile Include="Alveo.UserCode\ObjType.cs" />
+    <Compile Include="Alveo.UserCode\OBV.cs" />
+    <Compile Include="Alveo.UserCode\OpenFileMode.cs" />
+    <Compile Include="Alveo.UserCode\OsMA.cs" />
+    <Compile Include="Alveo.UserCode\PlotTrades.cs" />
+    <Compile Include="Alveo.UserCode\PPO.cs" />
+    <Compile Include="Alveo.UserCode\PredefinedArrow.cs" />
+    <Compile Include="Alveo.UserCode\PriceConstants.cs" />
+    <Compile Include="Alveo.UserCode\PriceCycle.cs" />
+    <Compile Include="Alveo.UserCode\PVT.cs" />
+    <Compile Include="Alveo.UserCode\ReadDoubleSize.cs" />
+    <Compile Include="Alveo.UserCode\ReadIntegerSize.cs" />
+    <Compile Include="Alveo.UserCode\RSI.cs" />
+    <Compile Include="Alveo.UserCode\RVI.cs" />
+    <Compile Include="Alveo.UserCode\SAR.cs" />
+    <Compile Include="Alveo.UserCode\ScriptBase.cs" />
+    <Compile Include="Alveo.UserCode\SearchDirection.cs" />
+    <Compile Include="Alveo.UserCode\SeriesArrays.cs" />
+    <Compile Include="Alveo.UserCode\SMA.cs" />
+    <Compile Include="Alveo.UserCode\SSMA.cs" />
+    <Compile Include="Alveo.UserCode\StdDev.cs" />
+    <Compile Include="Alveo.UserCode\Stochastic.cs" />
+    <Compile Include="Alveo.UserCode\TimeCycle.cs" />
+    <Compile Include="Alveo.UserCode\TradeOperations.cs" />
+    <Compile Include="Alveo.UserCode\UninitializeReason.cs" />
+    <Compile Include="Alveo.UserCode\Volume.cs" />
+    <Compile Include="Alveo.UserCode\WPR.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
